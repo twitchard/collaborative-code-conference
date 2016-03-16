@@ -1,0 +1,43 @@
+{
+  "name": "oneclick-backend",
+  "description": "Setup a coding interview with one click -- audio, video, shared coding",
+  "keywords": [
+    "video conference",
+    "video",
+    "conference",
+    "web conference",
+    "webrtc",
+    "hangout",
+    "webex"
+  ],
+  "website": "https://github.com/crcastle/collaborative-coding-coference",
+  "repository": "https://github.com/crcastle/collaborative-coding-coference",
+  "success_url": "/",
+  "addons": [],
+  "env": {
+    "TWILIO_ACCOUNT_SID": {
+      "description": "Twilio AccountSID - find here https://www.twilio.com/user/account/settings",
+      "value": ""
+    },
+    "TWILIO_API_KEY": {
+      "description": "Twilio Video API Key SID - generate one here https://www.twilio.com/user/account/video/dev-tools/api-keys",
+      "value": ""
+    },
+    "TWILIO_API_SECRET": {
+      "description": "Twilio API authentication secret - get one here https://www.twilio.com/user/account/video/dev-tools/api-keys",
+      "value": ""
+    },
+    "TWILIO_CONFIGURATION_SID": {
+      "description": "Twilio configuration RTC Profile ID - generate one here https://www.twilio.com/user/account/video/profiles",
+      "value": ""
+    },
+    "PUBLIC_FOLDER": {
+      "description": "Folder from which static assets (e.g. css, js, images) are served (DO NOT EDIT)",
+      "value": "public"
+    },
+    "ACCESS_TOKEN_TTL": {
+      "description": "Duration of validity of Twilio access token (in seconds) (DO NOT EDIT)",
+      "value": "7200"
+    }
+  }
+}
