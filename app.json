@@ -1,6 +1,6 @@
 {
-  "name": "oneclick-backend",
-  "description": "Setup a coding interview with one click -- audio, video, shared coding",
+  "name": "collaborative-code-coference",
+  "description": "Setup a collaborative coding session with one click -- audio, video, shared coding",
   "keywords": [
     "video conference",
     "video",
@@ -10,8 +10,8 @@
     "hangout",
     "webex"
   ],
-  "website": "https://github.com/crcastle/collaborative-coding-coference",
-  "repository": "https://github.com/crcastle/collaborative-coding-coference",
+  "website": "https://github.com/crcastle/collaborative-code-coference",
+  "repository": "https://github.com/crcastle/collaborative-code-coference",
   "success_url": "/",
   "addons": [],
   "env": {
