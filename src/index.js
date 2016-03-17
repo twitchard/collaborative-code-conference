@@ -123,7 +123,7 @@ function loadWebRtc() {
     // Bind button to connect to audio/video conversation
     document.getElementById('connect').onclick = function() {
       var docName = window.location.pathname.slice(1);
-      var username = 'bob'; //TODO: prompt user for their name
+      var username = 'the-other-user'; //TODO: prompt user for their name
 
       console.log('Getting new conversations client');
       getConnectedConversationsClientFor(username)
