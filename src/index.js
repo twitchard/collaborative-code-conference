@@ -21,6 +21,7 @@ require('codemirror/mode/markdown/markdown');
 require('codemirror/mode/perl/perl');
 require('codemirror/mode/php/php');
 require('codemirror/mode/ruby/ruby');
+require('codemirror/mode/vb/vb');
 
 // FIXME: figure out how to makes the themes configurable
 // FIXME: figure out how to not duplicate code listing themes here and select menu options below
@@ -252,6 +253,7 @@ function loadCoding() {
   modeSelector.add(new Option('PHP', 'text/x-php')); //php
   modeSelector.add(new Option('Ruby', 'text/x-ruby')); //ruby
   modeSelector.add(new Option('XML', 'application/xml')); //xml
+  modeSelector.add(new Option('VB.NET', 'text/x-vb')); //vb
 
   var themeSelector = document.querySelector('#theme-selector');
   themeSelector.addEventListener('change', function(event) {
