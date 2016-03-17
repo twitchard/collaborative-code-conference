@@ -39,6 +39,9 @@ require('./index.css');
 
 require('codemirror/mode/meta');
 
+require('codemirror/addon/display/fullscreen.js');
+require('codemirror/addon/display/fullscreen.css');
+
 var bindEditor = require('gulf-codemirror');
 
 var editableDoc = null;
@@ -223,11 +226,13 @@ function loadWebRtc() {
 function loadCoding() {
   var opts = {
     'lineNumbers': true,
-    'autofocus': true
+    'autofocus': true,
+    'fullScreen': true,
+    'mode': 'javascript',
+    'theme': 'solarized dark'
   };
   var editor = document.querySelector('#editor');
   var cm = CodeMirror(editor, opts);
-  cm.setOption('mode', 'plain text');
   var modeSelector = document.querySelector('#mode-selector');
   modeSelector.addEventListener('change', function(event) {
     cm.setOption('mode', event.target.value);
