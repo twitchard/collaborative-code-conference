@@ -10,7 +10,7 @@
 /* PADDING */
 
 .CodeMirror-lines {
-  padding: 4px 0; /* Vertical padding around content */
+  padding: 40px 0 4px 0; /* Vertical padding around content */
 }
 .CodeMirror pre {
   padding: 0 4px; /* Horizontal padding of content */
@@ -802,5 +802,53 @@ view-port
 .cm-s-zenburn .CodeMirror-activeline-background { background: #000000; }
 .cm-s-zenburn div.CodeMirror-selected { background: #545454; }
 .cm-s-zenburn .CodeMirror-focused div.CodeMirror-selected { background: #4f4f4f; }
+#code-options {
+  position: relative;
+  margin: 0 0 0 30px;
+  z-index: 10;
+}
+
+#conf {
+  text-align: center;
+  position: absolute;
+  right: 50px;
+  width: 25%;
+  z-index: 20;
+}
+
+#local-media {
+  margin: 0 auto;
+  width: 125px;
+  height: 95px;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 10px;
+  background-color: rgba(20, 20, 20, 0.7);
+}
+#local-media video, #remote-media video {
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 10px;
+}
+
+#remote-media-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%;
+}
+
+#remote-media {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 10px;
+  background-color: rgba(20, 20, 20, 0.7);
+}
+.CodeMirror-fullscreen {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  height: auto;
+  z-index: 9;
+}
 
 /*# sourceMappingURL=build.css.map*/
