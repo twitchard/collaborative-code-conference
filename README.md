@@ -8,7 +8,7 @@ Use this project to create an (almost) free coding web conference in less than 5
 
 Most importantly, you don't need to do any local development to use it: click the purple button, configure some stuff, start a conference room, send the URL to the attendee.  That's it!
 
-![Screenshot](http://cl.ly/223E0D1N2o3D/Screen%20Shot%202016-03-16%20at%2011.19.26%20PM.png)
+![Screenshot](http://cl.ly/2w2N0z1H1f3d/Screen%20Shot%202016-03-17%20at%2012.53.45%20AM.png)
 
 ## Setup Instructions
 Setup will take about 5 minutes the first time.  After the first time, it's about 30 seconds.  
@@ -67,9 +67,10 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 * [x] Define join flow
 * [x] Style
 * [x] Add sexy screenshot to README
-* [x] Add sexier screenshot to README
+* [ ] Add sexier screenshot to README
 * [ ] Add input box for user to provide name before sending video invite
 * [ ] Add buttons to increase and decrease editor font size
+* [ ] Add button to 'save to gist'
 * [ ] Write tests
 * [ ] Add project logo to app.json and README
 * [ ] Add a LICENSE
