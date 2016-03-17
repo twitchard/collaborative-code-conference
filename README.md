@@ -13,17 +13,24 @@ Most importantly, you don't need to do any local development to use it: click th
 ## Setup Instructions
 Setup will take about 5 minutes the first time.  After the first time, it's about 30 seconds.  
 
-##### 1. Deploy App
+##### 1. Deploy app
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
 
 This will deploy the web app to [Heroku](https://www.heroku.com).
 
-##### 2. Configure App
-This will walk you through copying and pasting a few [Twilio](https://www.twilio.com) configuration values and, if you don't have one, direct you to create a Twilio account first.
+##### 2. Configure app
+This will walk you through generating and pasting a few [Twilio](https://www.twilio.com) configuration values and, if you don't have one, direct you to create a Twilio account first.
 
-##### 3. Create a conference
+##### 3. Create conference
+After Heroku has finished deploying the app, click the button to view it.  From there choose a name for your code conference and click 'Create New Code Conference'.
 
-##### 4. Share the URL with the attendee
+You can create as many code conferences as you like.
+
+##### 4. Share URL
+Share the URL with the person you want to collaborate with.  Anyone that opens that URL will see the same code that you see.  Any edits you make will be shared with your collaborator in real-time.
+
+##### 5. Connect video
+If two people are viewing a unique code conference URL, one of you can click 'Connect Video' to create a peer-to-peer audio and video WebRTC connection between your browsers.  The other side will be prompted and must accept the invitation.
 
 ## FAQ
 * *What is Heroku?*  
@@ -43,10 +50,10 @@ Twilio helps setup the peer-to-peer connection between interviewer and interview
 Not yet!  But that's because my code has not been fully tested.  However the underlying services provided by Heroku and Twilio are battle-tested and very stable.  Heroku is owned by [Salesforce](https://www.salesforce.com) and, as of writing this (March 2016), serves [8 billion requests per day](https://www.heroku.com/what#trusting-heroku-with-success).  Twilio is the leader in programmable web, SMS, and video communications.  Here is more information about Twilio's [security](https://www.twilio.com/platform/security), [resiliency](https://www.twilio.com/platform/resiliency), and [scalability](https://www.twilio.com/platform/scalability).
 
 * *Can you add Feature X?*  
-Check the [open feature requests](https://github.com/crcastle/collaborative-code-conference/labels/enhancement) to see if someone else has already requested Feature X.  If not, [please tell me more](https://github.com/crcastle/collaborative-code-conference/issues/new?title=New%20Feature:%20&labels=enhancement) about what you're looking for and why it would be useful.  If you know Ruby and/or JavaScript, feel free to submit a [pull request](https://github.com/crcastle/collaborative-code-conference/pulls) with the code changes for Feature X and we'll check it out.
+Check the [open feature requests](https://github.com/crcastle/collaborative-code-conference/labels/enhancement) to see if someone else has already requested Feature X.  If not, [please tell me more](https://github.com/crcastle/collaborative-code-conference/issues/new?title=New%20Feature:%20&labels=enhancement) about what you're looking for and why it would be useful.  If you know JavaScript and/or Node.js, feel free to submit a [pull request](https://github.com/crcastle/collaborative-code-conference/pulls) with the code changes for Feature X and I'll check it out.
 
 * *I found a bug.*  
-Please [tell me about it](https://github.com/crcastle/collaborative-code-conference/issues/new?title=Bug:%20&labels=bug) so we can fix it!
+Please [tell me about it](https://github.com/crcastle/collaborative-code-conference/issues/new?title=Bug:%20&labels=bug) so I can fix it!
 
 Have an unanswered question?  [Ask it here](https://github.com/crcastle/collaborative-code-conference/issues/new?title=Question:%20&labels=question).
 
