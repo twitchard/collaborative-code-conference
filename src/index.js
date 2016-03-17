@@ -22,7 +22,7 @@ require('codemirror/mode/perl/perl');
 require('codemirror/mode/php/php');
 require('codemirror/mode/ruby/ruby');
 
-// FIXME: figure out how to load CSS theme files here instead of in index.html
+// FIXME: figure out how to makes the themes configurable
 // FIXME: figure out how to not duplicate code listing themes here and select menu options below
 require('./codemirror.css');
 require('codemirror/theme/base16-dark.css');
@@ -35,6 +35,7 @@ require('codemirror/theme/neat.css');
 require('codemirror/theme/solarized.css');
 require('codemirror/theme/yeti.css');
 require('codemirror/theme/zenburn.css');
+require('./index.css');
 
 require('codemirror/mode/meta');
 
