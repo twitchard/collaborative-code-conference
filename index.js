@@ -2,12 +2,14 @@
 if (process.env.NODE_ENV != 'production') require('dotenv').load();
 
 // Web server dependencies
+var http = require('http');
 var express = require('express');
 var app = express();
 var path = require('path');
 
 // Collaborative coding dependencies
-var browserChannel = require('browserchannel').server;
+// var browserChannel = require('browserchannel').server;
+var WebSocketServer = require("ws").Server
 var gulf = require('gulf');
 var textOT = require('ot-text').type;
 
@@ -15,86 +17,23 @@ var textOT = require('ot-text').type;
 var AccessToken = require('twilio').AccessToken;
 var ConversationsGrant = AccessToken.ConversationsGrant;
 
-// TODO: change document store to redis or some other persistent DB
+/*
+ *
+ * Use an in-memory document store
+ * i.e. documents are lost when server is restarted
+ * TODO: change document store to redis or mongo some other persistent DB
+ *
+ *
+ */
 var documents = {};
 
 /*
  *
- * Setup browser channel middleware
- *
- *
- */
-var bs = browserChannel(function(session) {
-  var sessionName = '' + session.id + '@' + session.address;
-  var docName = path.parse(session.headers.referer).base;
-  console.log('New session', sessionName, 'for doc', docName);
-
-  var doc = null;
-  if (docName in documents) { // Doc already exists
-    console.log('Connecting user to existing doc', docName);
-    doc = documents[docName];
-  } else { // Doc doesn't yet exist
-    // Create new doc with instructions
-    console.log('Connecting user to new doc', docName);
-    var docContents = require('./instructions');
-
-    doc = gulf.Document.create(new gulf.MemoryAdapter, textOT, docContents, function(er, doc) {
-      if (er) { console.log('Error creating doc:', er); }
-
-      // attach some listeners for logging
-      doc.on('init', function() { console.log('doc initialized'); });
-      doc.on('edit', function() { console.log('edit received'); });
-
-      // add doc to in-memory document store (i.e. dumb Object) :P
-      // TODO: change document store to redis or some other persistent DB
-      documents[docName] = doc;
-    });
-  }
-
-  // create slave link to doc
-  var link = doc.slaveLink();
-
-  // Receive a change message from the doc
-  link.on('data', function(data) {
-    console.log('Received message from LINK: %j', data);
-
-    // Send the change message over the browser channel
-    session.send(data);
-  });
-
-  // Log link errors to console
-  link.on('error', function(error) {
-    console.error('Error receiving data from link: ', error);
-  })
-
-  // Receive a message from the browser channel
-  session.on('message', function(data) {
-    console.log('Received message from client ' + sessionName + ': %j', data);
-
-    // Send the message to the link
-    link.write(data);
-  });
-
-  session.on('close', function(reason) {
-    console.log(sessionName + ' disconnected (' + reason + ')');
-  });
-});
-
-/*
- *
- * Setup static content middleware
+ * Setup and use static content middleware
  *
  *
  */
 var serve = express.static(path.join(__dirname, 'public'), { 'index': false });
-
-/*
- *
- * add Browserchannel and static middleware.
- *
- *
- */
-app.use(bs);
 app.use(serve);
 
 /*
@@ -149,7 +88,8 @@ var getToken = function(request, response) {
   });
 };
 
-// Handle /[docName] requests
+// Handle the /[docName] route, where [docName]
+// is any non-empty, URL-valid string except 'token'
 var serveDocument = function(req, res, next) {
   if (req.path === '/token') {
     next();
@@ -158,12 +98,78 @@ var serveDocument = function(req, res, next) {
   }
 };
 
-// Switch between /[docName] and /token handlers
+// Route between /[docName] and /token handlers
 app.get(/\/.+/, [serveDocument, getToken]);
 
 // Listen on configured port or 4444
-var port = process.env.PORT || 4444;
-var env = process.env.NODE_ENV || 'development';
-app.listen(port, function() {
-  console.log('Server running in', env, 'mode and listening on port', port);
+var port   = process.env.PORT || 4444;
+var env    = process.env.NODE_ENV || 'development';
+var server = http.createServer(app);
+server.listen(port);
+console.log('Server running in', env, 'mode and listening on port', port);
+
+/*
+ *
+ * Setup WebSocket server
+ *
+ *
+ */
+var wss = WebSocketServer({server: server});
+console.log('WebSocket server created');
+
+wss.on('connection', function(ws) {
+  var docName = path.parse(ws.upgradeReq.url).base;
+  console.log('WebSocket connection established for', docName);
+
+  var doc = null;
+  if (docName in documents) { // Doc already exists
+    console.log('Requested doc exists', docName);
+    doc = documents[docName];
+  } else { // Doc doesn't yet exist
+    console.log('Creating new doc', docName);
+    var docContents = require('./lib/instructions');
+
+    doc = gulf.Document.create(new gulf.MemoryAdapter, textOT, docContents, function(er, doc) {
+      if (er) { console.log('Error creating doc:', er); }
+
+      // Attach some listeners for logging
+      doc.on('init', function() { console.log('New doc initialized', docName); });
+      doc.on('edit', function() { console.log('Edit received for doc', docName); });
+
+      // Add doc to in-memory document store (i.e. dumb Object) :P
+      // TODO: change document store to redis or mongo some other persistent DB
+      documents[docName] = doc;
+    });
+  }
+
+  // Create slave link to doc and pipe its data out to and in from WebSocket
+  var link = doc.slaveLink();
+
+  // Receive a change message from the doc
+  link.on('data', function(data) {
+    console.log('Received message from LINK: %j', data);
+
+    // Send the change message over the websocket
+    ws.send(data, function(err) {
+      if (err) { console.log('Error sending data to WebSocket', err); }
+    });
+  });
+
+  // Log link errors to console
+  link.on('error', function(error) {
+    console.error('Error receiving data from link:', error);
+  })
+
+  // Receive a message from the websocket
+  ws.on('message', function(data) {
+    console.log('Received message from client: %j', data);
+
+    // Send the message to the link
+    link.write(data);
+  });
+
+  ws.on('close', function(reason) {
+    console.log('WebSocket disconnected (', reason, ')');
+    link.removeAllListeners();
+  });
 });

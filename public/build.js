@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* global Twilio:true BCSocket:true */
+	/* global Twilio:true */
 	
 	__webpack_require__(1).polyfill();
 	__webpack_require__(6);
@@ -321,21 +321,22 @@
 	  editableDoc = bindEditor(cm);
 	  var link = editableDoc.masterLink();
 	
-	
-	  var socket = new BCSocket('/channel', { reconnect: true });
-	  socket.onopen = function() {
-	    console.log('socket opened');
+	  var loc = location.href.replace(/^http/, 'ws')
+	  var ws = new WebSocket(loc);
+	  ws.onopen = function() {
+	    console.log('WebSocket opened');
 	
 	    link.on('data', function(data) {
-	      console.log('got a message from LINK: ', data)
+	      console.log('Got a message from LINK: ', data)
 	
-	      socket.send(data);
+	      ws.send(data);
 	    });
-	  };
-	  socket.onmessage = function(message) {
-	    console.log('got a message from SERVER: ', message);
 	
-	    link.write(message.data);
+	    ws.onmessage = function(event) {
+	      console.log('Got a message from SERVER: ', event);
+	
+	      link.write(event.data);
+	    }
 	  };
 	}
 
