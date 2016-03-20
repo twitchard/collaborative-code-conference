@@ -1,5 +1,8 @@
 // Load config vars
 if (process.env.NODE_ENV != 'production') require('dotenv').load();
+var log = require('loglevel');
+log.setLevel(process.env.LOG_LEVEL || 'debug');
+log.info('Log level set to', process.env.LOG_LEVEL);
 
 // Web server dependencies
 var http = require('http');
@@ -106,7 +109,7 @@ var port   = process.env.PORT || 4444;
 var env    = process.env.NODE_ENV || 'development';
 var server = http.createServer(app);
 server.listen(port);
-console.log('Server running in', env, 'mode and listening on port', port);
+log.info('Server running in', env, 'mode and listening on port', port);
 
 /*
  *
@@ -115,7 +118,7 @@ console.log('Server running in', env, 'mode and listening on port', port);
  *
  */
 var wss = WebSocketServer({server: server});
-console.log('WebSocket server created');
+log.info('WebSocket server created');
 
 wss.on('connection', function(ws) {
   var docName = path.parse(ws.upgradeReq.url).base;
@@ -123,18 +126,18 @@ wss.on('connection', function(ws) {
 
   var doc = null;
   if (docName in documents) { // Doc already exists
-    console.log('Requested doc exists', docName);
+    log.debug('Requested doc exists', docName);
     doc = documents[docName];
   } else { // Doc doesn't yet exist
-    console.log('Creating new doc', docName);
+    log.debug('Creating new doc', docName);
     var docContents = require('./lib/instructions');
 
     doc = gulf.Document.create(new gulf.MemoryAdapter, textOT, docContents, function(er, doc) {
-      if (er) { console.log('Error creating doc:', er); }
+      if (er) { log.error('Error creating doc:', er); }
 
       // Attach some listeners for logging
-      doc.on('init', function() { console.log('New doc initialized', docName); });
-      doc.on('edit', function() { console.log('Edit received for doc', docName); });
+      doc.on('init', function() { log.debug('New doc initialized', docName); });
+      doc.on('edit', function() { log.debug('Edit received for doc', docName); });
 
       // Add doc to in-memory document store (i.e. dumb Object) :P
       // TODO: change document store to redis or mongo some other persistent DB
@@ -147,29 +150,29 @@ wss.on('connection', function(ws) {
 
   // Receive a change message from the doc
   link.on('data', function(data) {
-    console.log('Received message from LINK: %j', data);
+    log.debug('Received message from LINK: %j', data);
 
     // Send the change message over the websocket
     ws.send(data, function(err) {
-      if (err) { console.log('Error sending data to WebSocket', err); }
+      if (err) { log.error('Error sending data to WebSocket', data, err); }
     });
   });
 
   // Log link errors to console
   link.on('error', function(error) {
-    console.error('Error receiving data from link:', error);
+    log.error('Error receiving data from link:', error);
   })
 
   // Receive a message from the websocket
   ws.on('message', function(data) {
-    console.log('Received message from client: %j', data);
+    log.debug('Received message from client: %j', data);
 
     // Send the message to the link
     link.write(data);
   });
 
-  ws.on('close', function(reason) {
-    console.log('WebSocket disconnected (', reason, ')');
+  ws.on('close', function(code, reason) {
+    log.debug('WebSocket disconnected (', code, reason, ')');
     link.removeAllListeners();
   });
 });

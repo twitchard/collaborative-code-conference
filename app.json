@@ -31,13 +31,9 @@
       "description": "Twilio configuration RTC Profile ID - generate one here https://www.twilio.com/user/account/video/profiles",
       "value": ""
     },
-    "PUBLIC_FOLDER": {
-      "description": "Folder from which static assets (e.g. css, js, images) are served (DO NOT EDIT)",
-      "value": "public"
-    },
-    "ACCESS_TOKEN_TTL": {
-      "description": "Duration of validity of Twilio access token (in seconds) (DO NOT EDIT)",
-      "value": "7200"
+    "LOG_LEVEL": {
+      "description": "Verbosity of log messages. From most verbose, trace -> debug -> info -> warn -> error, least verbose",
+      "value": "info"
     }
   }
 }
