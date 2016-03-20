@@ -136,7 +136,7 @@ wss.on('connection', function(ws) {
       ws.ping('hello', null, true);
       pingsSent++;
     }
-  }, 59*1000);
+  }, 45*1000);
 
   var doc = null;
   if (docName in documents) { // Doc already exists
