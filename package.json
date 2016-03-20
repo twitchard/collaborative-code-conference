@@ -2,6 +2,10 @@
   "name": "collaborative-code-conference",
   "version": "1.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crcastle/collaborative-code-conference"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
