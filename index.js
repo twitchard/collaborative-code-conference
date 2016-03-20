@@ -122,7 +122,20 @@ log.info('WebSocket server created');
 
 wss.on('connection', function(ws) {
   var docName = path.parse(ws.upgradeReq.url).base;
-  console.log('WebSocket connection established for', docName);
+  log.debug('WebSocket connection established for', docName);
+
+  // Setup WebSocket keepalive ping pongs
+  var pingsSent = 0;
+  ws.on('pong', function() { pingsSent = 0; });
+  var pinger = setInterval(function() {
+    if (pingsSent >= 2) {
+      log.warn('Client not responding to ping. Closing WebSocket.');
+      ws.close();
+    } else {
+      ws.ping('hello', null, true);
+      pingsSent++;
+    }
+  }, 59*1000);
 
   var doc = null;
   if (docName in documents) { // Doc already exists
@@ -174,5 +187,6 @@ wss.on('connection', function(ws) {
   ws.on('close', function(code, reason) {
     log.debug('WebSocket disconnected (', code, reason, ')');
     link.removeAllListeners();
+    clearInterval(pinger);
   });
 });
