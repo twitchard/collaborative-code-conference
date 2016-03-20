@@ -11,7 +11,6 @@ var app = express();
 var path = require('path');
 
 // Collaborative coding dependencies
-// var browserChannel = require('browserchannel').server;
 var WebSocketServer = require("ws").Server
 var gulf = require('gulf');
 var textOT = require('ot-text').type;
@@ -42,7 +41,7 @@ app.use(serve);
 /*
  *
  *
- * Setup routing:
+ * Setup web request routing:
  *  /           - Instructions and about page
  *  /token      - Generates and returns a Twilio token with Programmable Video capabilities
  *  /[docName]  - Connect to doc [docName], where [docName] is any non-empty string except 'token'
@@ -60,12 +59,13 @@ app.get('/', function(req, res) {
   res.send('This is the homepage!');
 });
 
-// Function for /token route
+// Handle /token route
 //
 // Generate an Access Token for a chat application user - it generates a random
 // username for the client requesting a token, and takes a device ID as a query
 // parameter.
 var getToken = function(request, response) {
+  log.debug('Generating Twilio token');
   var identity = request.query.identity;
 
   // Create an access token which we will sign and return to the client,
@@ -91,12 +91,13 @@ var getToken = function(request, response) {
   });
 };
 
-// Handle the /[docName] route, where [docName]
+// Handle /[docName] route, where [docName]
 // is any non-empty, URL-valid string except 'token'
 var serveDocument = function(req, res, next) {
   if (req.path === '/token') {
     next();
   } else { // path is a document name
+    log.debug('Serving index.html');
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   }
 };
