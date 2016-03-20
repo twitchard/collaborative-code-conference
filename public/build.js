@@ -336,7 +336,11 @@
 	      console.log('Got a message from SERVER: ', event);
 	
 	      link.write(event.data);
-	    }
+	    };
+	
+	    ws.onclose = function() {
+	      document.querySelector('#editor-connection-status').style.visibility = 'visible';
+	    };
 	  };
 	}
 

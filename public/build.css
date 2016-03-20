@@ -844,6 +844,14 @@ view-port
   border-radius: 10px;
   background-color: rgba(20, 20, 20, 0.7);
 }
+
+#editor-connection-status {
+  color: white;
+  background-color: red;
+  padding: 0 3px;
+  font-family: monospace;
+  visibility: hidden;
+}
 .CodeMirror-fullscreen {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
