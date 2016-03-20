@@ -56,7 +56,8 @@ app.get('/', function(req, res) {
   //  - single button that goes to /[CONTENTS OF INPUT BOX]
   //  - link to github repo ("setup your own disposable code conference")
   //  - link to blog post
-  res.send('This is the homepage!');
+  log.debug('Serving about.html');
+  res.sendFile(path.join(__dirname, 'public', 'about.html'));
 });
 
 // Handle /token route

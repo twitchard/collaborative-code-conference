@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Setup a collaborative coding session with one click -- audio, video, shared coding">
+    <meta name="author" content="Chris Castle">
+
+    <title>Collaborative Code Conference</title>
+
+    <!-- Github fork me ribbon! -->
+    <link rel="stylesheet" href="/css/gh-fork-ribbon.css">
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/css/gh-fork-ribbon.ie.css">
+    <![endif]-->
+    <style>
+      .github-fork-ribbon {
+        /*background-color: #090;*/
+      }
+    </style>
+
+    <style>
+      body {
+        /*background-color: #022B35;*/
+        background-color: #333;
+        text-align: center;
+        color: #ccc;
+        font-family: sans-serif;
+      }
+
+      div#intro {
+        text-align: left;
+        float: right;
+      }
+
+      img#screenshot {
+        width: 40%;
+      }
+
+      #docAddress {
+        clear: both;
+        width: 100%;
+      }
+
+      #url {
+        font-family: monospace;
+        color: #ccc;
+        font-family: monospace;
+        font-size: 2em;
+      }
+
+      input#docName {
+        background-color: #333;
+        border: 0;
+        border-bottom: 1px solid #666;
+        color: #ccc;
+        font-family: monospace;
+        font-size: 2em;
+        text-align: left;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      input#docName:focus {
+        outline-width: 0;
+      }
+
+      button#go-to-doc {
+        font-size: 2em;
+        border-radius: 5px;
+        vertical-align: middle;
+      }
+
+      img#gif {
+        height: 7em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Begin "WORK IN-PROGRESS" RIBBON -->
+    <div class="github-fork-ribbon-wrapper right">
+      <div class="github-fork-ribbon">
+          <a href="https://github.com/crcastle/collaborative-code-conference#readme">MAKE YOUR OWN!</a>
+      </div>
+    </div>
+    <!-- End "WORK IN-PROGRESS" RIBBON -->
+
+    <h1>Collaborative Code Conference</h3>
+
+    <div id="intro">
+      <p>Create a new collaborative coding workspace.</p>
+      <p>Includes a shared, real-time text editor plus a peer-to-peer audio/video conference.</p>
+    </div>
+
+    <img id="screenshot" src="http://cl.ly/0c0U1k1W0n1n/Screen%20Shot%202016-03-17%20at%201.31.41%20PM.png">
+
+    <br><br><br>
+    <div id="docAddress">
+      <span id="url">https://codie.herokuapp.com/</span><input id="docName" type="text">
+
+      <br><br>
+      <button id="go-to-doc">
+        Start Writing Code
+      </button>
+    </div>
+
+    <br><br>
+    <img id="gif" src="/img/shiba-programmer.gif">
+
+    <div id="footer">
+      <p>by <a href="https://crc.io">Chris Castle</a>, <a href="https://twitter.com/crc">@crc</a></p>
+    </div>
+    <script>
+      var url = document.querySelector('#url');
+      url.innerHTML = location.origin + '/';
+    </script>
+  </body>
+</html>
