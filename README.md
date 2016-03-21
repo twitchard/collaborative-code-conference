@@ -62,6 +62,7 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 ## Inspiration
 * [Talky.io](https://talky.io)
 * [UberConference](https://www.uberconference.com)
+* [Hive.js](http://hivejs.org)
 * Google technical interviews
 
 ## Contributing
@@ -71,7 +72,7 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 
 ## TODO
 * [x] Prototype collaborative coding page
-* [ ] Define setup flow (instructions/about homepage)
+* [x] Define setup flow (instructions/about homepage)
 * [x] Define join flow
 * [x] Style
 * [x] Add sexy screenshot to README
