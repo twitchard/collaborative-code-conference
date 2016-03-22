@@ -48,6 +48,17 @@ app.use(serve);
  *
  *
 */
+// Redirect http requests to https when in production
+app.get('*', function(req, res, next) {
+  if (req.headers['x-forwarded-proto'] != 'https' &&
+        process.env.NODE_ENV == 'production') {
+    log.info('Redirecting request to HTTPS');
+    res.redirect('https://' + req.headers.host + req.url);
+  } else {
+    next();
+  }
+});
+
 // Handle / route
 app.get('/', function(req, res) {
   // TODO: replace this with a nice homepage like talky.io:
