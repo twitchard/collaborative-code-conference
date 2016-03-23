@@ -326,17 +326,11 @@
 	  ws.onopen = function() {
 	    console.log('WebSocket opened');
 	
-	    link.on('data', function(data) {
-	      console.log('Got a message from LINK: ', data)
+	    // Document change, send to server
+	    link.on('data', function(data) { ws.send(data); });
 	
-	      ws.send(data);
-	    });
-	
-	    ws.onmessage = function(event) {
-	      console.log('Got a message from SERVER: ', event);
-	
-	      link.write(event.data);
-	    };
+	    // Receive change from server, send to link
+	    ws.onmessage = function(event) { link.write(event.data); };
 	
 	    ws.onclose = function() {
 	      document.querySelector('#editor-connection-status').style.visibility = 'visible';
