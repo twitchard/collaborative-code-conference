@@ -156,7 +156,7 @@ wss.on('connection', function(ws) {
     doc = documents[docName];
   } else { // Doc doesn't yet exist
     log.debug('Creating new doc', docName);
-    var docContents = require('./lib/instructions');
+    var docContents = require(process.env.EDITOR_INSTRUCTIONS || './lib/instructions');
 
     doc = gulf.Document.create(new gulf.MemoryAdapter, textOT, docContents, function(er, doc) {
       if (er) { log.error('Error creating doc:', er); }
