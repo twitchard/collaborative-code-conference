@@ -3,7 +3,7 @@ const path = require('path');
 
 const PATHS = {
   app: path.resolve(__dirname, 'src', 'client'),
-  build: path.resolve(__dirname, 'public'),
+  build: path.resolve(__dirname, 'build', 'client'),
   node_modules: path.resolve(__dirname, 'node_modules')
 };
 

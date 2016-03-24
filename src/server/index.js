@@ -35,7 +35,7 @@ var documents = {};
  *
  *
  */
-var serve = express.static(path.join(__dirname, '..', 'public'), { 'index': false });
+var serve = express.static(path.join(__dirname, '..', 'client'), { 'index': false });
 app.use(serve);
 
 /*
@@ -68,7 +68,7 @@ app.get('/', function(req, res) {
   //  - link to github repo ("setup your own disposable code conference")
   //  - link to blog post
   log.debug('Serving about.html');
-  res.sendFile(path.join(__dirname, 'public', 'about.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'about.html'));
 });
 
 // Handle /token route
@@ -110,7 +110,7 @@ var serveDocument = function(req, res, next) {
     next();
   } else { // path is a document name
     log.debug('Serving index.html');
-    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
   }
 };
 
