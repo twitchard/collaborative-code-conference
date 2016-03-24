@@ -1,22 +1,38 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-module.exports = {
-  devtool: 'source-map',
-  entry: './src/index.js',
+const path = require('path');
+
+const PATHS = {
+  app: path.resolve(__dirname, 'src', 'client'),
+  build: path.resolve(__dirname, 'public'),
+  node_modules: path.resolve(__dirname, 'node_modules')
+};
+
+const config = {
+  devtool: 'eval-source-map',
+  entry: PATHS.app,
   output: {
-    path: './public',
+    path: PATHS.build,
     filename: 'build.js'
   },
   module: {
     loaders: [
-      // Extract css files
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: [PATHS.node_modules],
+        query: {
+          presets: ['es2015']
+        }
+      },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       }
     ]
   },
-  // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
   plugins: [
-    new ExtractTextPlugin("build.css")
+    new ExtractTextPlugin("styles.css")
   ]
 }
+
+module.exports = config;
