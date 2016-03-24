@@ -30,6 +30,7 @@
     "webpack": "^1.12.14"
   },
   "dependencies": {
+    "expose-loader": "^0.7.1",
     "express": "^4.13.4",
     "gulf": "^4.0.3",
     "gulf-mongodb": "^0.2.1",
