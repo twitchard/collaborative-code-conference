@@ -17,6 +17,7 @@ require('codemirror/mode/markdown/markdown');
 require('codemirror/mode/perl/perl');
 require('codemirror/mode/php/php');
 require('codemirror/mode/ruby/ruby');
+require('codemirror/mode/shell/shell');
 require('codemirror/mode/vb/vb');
 
 // FIXME: figure out how to makes the themes configurable
