@@ -146,28 +146,20 @@ ws.onopen = function() {
 // Load gist in editor
 //
 // on click of 'Load GitHub Gist' button, show modal asking for gist url or id
-var gister = require('./gister');
-var loadGistButton = document.getElementById('load-gist');
-loadGistButton.onclick = function() {
-  // modal text: "What is the gist URL? This will replace all text in the editor with the contents of the gist."
-  // modal buttons: 'Load' and 'Cancel'
-  // - on cancel, close modal
-  var url = 'https://gist.github.com/crcastle/7f34cf4ad33d5c67e05d';
-
-  // - on load, show spinner while getting gist from github api
-  gister.getGist(url)
-  .then(function(data) {
-    // - if 1 file, ask if ok to overwrite editor contents
-    // - if >1 file, ask to click on 1 file name
-    // cm.setValue(newContents);
-    cm.setValue(data.files[Object.keys(data.files)[0]].content);
-  });
-};
+var Gister = require('./gister');
+var g = new Gister();
+var loadGistButton   = document.querySelector('#load-gist');
+var createGistButton = document.querySelector('#create-gist');
+loadGistButton.addEventListener('click', g.loadGistModal.bind(g));
+createGistButton.addEventListener('click', g.createGistModal.bind(g));
+g.on('file', function(file) {
+  cm.setValue(file);
+});
 
 module.exports = {
   CodeMirror: CodeMirror,
   cm: cm,
   editableDoc: editableDoc,
   link: link,
-  gister: gister
+  bsn: bsn
 };
