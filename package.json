@@ -36,8 +36,7 @@
     "isomorphic-fetch": "^2.2.1",
     "parallelshell": "^2.0.0",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.12.14"
   },
   "dependencies": {
     "express": "^4.13.4",
