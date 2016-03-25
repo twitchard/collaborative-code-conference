@@ -3,6 +3,9 @@
   <head>
     <title>Collaborative Code Conference</title>
 
+    <!-- Bootstrap 3 core CSS -->
+  	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="/styles.css">
   </head>
   <body>
@@ -17,12 +20,22 @@
     </div>
 
     <div id="code-options">
-      <select id="mode-selector">
-        <option value="text/text">Language</option>
-      </select>
-      <select id="theme-selector">
-        <option value="default">Theme</option>
-      </select>
+      <div class="btn-group">
+        <button style="width: 13em; text-align: left;" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" tabindex="1">
+          <span id="language-button-text">Language</span>
+          <span class="caret"></span>
+        </button>
+        <ul id="language-dropdown" class="dropdown-menu" role="menu">
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button style="width: 13em; text-align: left;" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" tabindex="2">
+          <span id="theme-button-text">Theme</span>
+          <span class="caret"></span>
+        </button>
+        <ul id="theme-dropdown" class="dropdown-menu" role="menu">
+        </ul>
+      </div>
       <span id="editor-connection-status" style="">Editor connection down. Please refresh.</span>
       <button id="load-gist">Load Gist</button>
     </div>

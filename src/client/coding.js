@@ -1,3 +1,4 @@
+var bsn = require("bootstrap.native");
 var CodeMirror = require('codemirror');
 
 // these are dependencies to other modes;
@@ -43,49 +44,85 @@ var bindEditor = require('gulf-codemirror');
 var opts = {
   'lineNumbers': true,
   'autofocus': true,
-  'fullScreen': true,
-  'mode': 'javascript',
-  'theme': 'solarized dark'
+  'fullScreen': true
 };
 var editor = document.querySelector('#editor');
 var cm = CodeMirror(editor, opts);
-var modeSelector = document.querySelector('#mode-selector');
-modeSelector.addEventListener('change', function(event) {
-  cm.setOption('mode', event.target.value);
-  cm.focus();
-});
-modeSelector.add(new Option('C', 'text/x-csrc')); //clike
-modeSelector.add(new Option('C++', 'text/x-c++src')); //clike
-modeSelector.add(new Option('C#', 'text/x-csharp')); //clike
-modeSelector.add(new Option('CSS', 'text/x-csharp')); //css
-modeSelector.add(new Option('Go', 'text/x-go')); //go
-modeSelector.add(new Option('HTML', 'text/html')); //htmlmixed
-modeSelector.add(new Option('Java', 'text/x-java')); //clike
-modeSelector.add(new Option('JavaScript', 'text/javascript')); //javascript
-modeSelector.add(new Option('Markdown', 'text/x-markdown')); //markdown
-modeSelector.add(new Option('Objective-C', 'text/x-objectivec')); //clike
-modeSelector.add(new Option('Perl', 'text/x-perl')); //perl
-modeSelector.add(new Option('PHP', 'text/x-php')); //php
-modeSelector.add(new Option('Ruby', 'text/x-ruby')); //ruby
-modeSelector.add(new Option('XML', 'application/xml')); //xml
-modeSelector.add(new Option('VB.NET', 'text/x-vb')); //vb
 
-var themeSelector = document.querySelector('#theme-selector');
-themeSelector.addEventListener('change', function(event) {
-  cm.setOption('theme', event.target.value);
-  cm.focus();
-});
-themeSelector.add(new Option('Base16 Dark', 'base16-dark'));
-themeSelector.add(new Option('Base16 Light', 'base16-light'));
-themeSelector.add(new Option('Cobalt', 'cobalt'));
-themeSelector.add(new Option('Eclipse', 'eclipse'));
-themeSelector.add(new Option('Material', 'material'));
-themeSelector.add(new Option('Monokai', 'monokai'));
-themeSelector.add(new Option('Neat', 'neat'));
-themeSelector.add(new Option('Solarized Dark', 'solarized dark'));
-themeSelector.add(new Option('Solarized Light', 'solarized light'));
-themeSelector.add(new Option('Yeti', 'yeti'));
-themeSelector.add(new Option('Zenburn', 'zenburn'));
+// Populate Language drop-down
+var modeSelector = document.querySelector('#language-dropdown');
+function languageListItem(name, mime) {
+  var li     = document.createElement('li');
+  var anchor = li.appendChild(document.createElement('a'));
+  anchor.appendChild(document.createTextNode(name));
+  anchor.setAttribute('id', name.replace(/\//g, '-'));
+  anchor.setAttribute('data-mime', mime);
+  anchor.setAttribute('href', '#');
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    cm.setOption('mode', mime);
+    document.querySelector('#language-button-text').innerHTML = 'Language: ' + name;
+    cm.focus();
+  });
+  return li;
+}
+var languages = [
+  { name: 'C',            mime: 'text/x-csrc' },
+  { name: 'C++',          mime: 'text/x-c++src' },
+  { name: 'C#',           mime: 'text/x-csharp' },
+  { name: 'CSS',          mime: 'text/css' },
+  { name: 'Go',           mime: 'text/x-go' },
+  { name: 'HTML',         mime: 'text/html' },
+  { name: 'Java',         mime: 'text/x-java' },
+  { name: 'JavaScript',   mime: 'text/javascript' },
+  { name: 'Markdown',     mime: 'text/x-markdown' },
+  { name: 'Objective-C',  mime: 'text/x-objectivec' },
+  { name: 'Perl',         mime: 'text/x-perl' },
+  { name: 'PHP',          mime: 'text/x-php' },
+  { name: 'Ruby',         mime: 'text/x-ruby' },
+  { name: 'Shell',        mime: 'text/x-sh' },
+  { name: 'XML',          mime: 'application/xml' },
+  { name: 'VB.NET',       mime: 'text/x-vb' }
+]
+for (var i = 0; i < languages.length; i++) {
+  modeSelector.appendChild(languageListItem(languages[i].name, languages[i].mime));
+}
+document.querySelector('#JavaScript').click();
+
+// Populate theme drop-down
+var themeSelector = document.querySelector('#theme-dropdown');
+themeSelector.style.width = '11em';
+function themeListItem(name, classPrefix) {
+  var li     = document.createElement('li');
+  var anchor = li.appendChild(document.createElement('a'));
+  anchor.appendChild(document.createTextNode(name));
+  anchor.setAttribute('id', classPrefix.replace(/ /g, '-'));
+  anchor.setAttribute('href', '#');
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    cm.setOption('theme', classPrefix);
+    document.querySelector('#theme-button-text').innerHTML = 'Theme: ' + name;
+    cm.focus();
+  });
+  return li;
+}
+var themes = [
+  { name: 'Base16 Dark',      classPrefix: 'base16-dark' },
+  { name: 'Base16 Light',     classPrefix: 'base16-light' },
+  { name: 'Cobalt',           classPrefix: 'cobalt' },
+  { name: 'Eclipse',          classPrefix: 'eclipse' },
+  { name: 'Material',         classPrefix: 'material' },
+  { name: 'Monokai',          classPrefix: 'monokai' },
+  { name: 'Neat',             classPrefix: 'neat' },
+  { name: 'Solarized Dark',   classPrefix: 'solarized dark' },
+  { name: 'Solarized Light',  classPrefix: 'solarized light' },
+  { name: 'Yeti',             classPrefix: 'yeti' },
+  { name: 'Zenburn',          classPrefix: 'zenburn' }
+];
+for (var j = 0; j < themes.length; j++) {
+  themeSelector.appendChild(themeListItem(themes[j].name, themes[j].classPrefix));
+}
+document.querySelector('#solarized-dark').click();
 
 var editableDoc = bindEditor(cm);
 var link = editableDoc.masterLink();
