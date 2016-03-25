@@ -37,10 +37,19 @@
         </ul>
       </div>
       <span id="editor-connection-status" style="">Editor connection down. Please refresh.</span>
-      <button id="load-gist">Load Gist</button>
+      <button type="button" class="btn btn-secondary" id="load-gist" tabindex="3">Load Gist</button>
+      <button disabled type="button" class="btn btn-secondary" data-toggle="modal" id="create-gist" tabindex="3">Save to Gist</button>
     </div>
 
     <div id="editor"></div>
+
+    <!-- modal frame -->
+    <div id="gistModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gistModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    		</div>
+    	</div>
+    </div>
 
     <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
     <script src="//media.twiliocdn.com/sdk/js/conversations/v0.13/twilio-conversations.min.js"></script>
