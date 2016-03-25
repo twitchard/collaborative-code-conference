@@ -10,7 +10,7 @@ var identity;
 
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
-  alert('WebRTC is not available in your browser.');
+  alert('Video and audio is not available in your browser, but you can still use the collaborative editor!');
 }
 
 var docName = window.location.pathname.slice(1);

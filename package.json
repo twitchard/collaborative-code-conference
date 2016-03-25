@@ -11,7 +11,7 @@
     "start": "node build/server/index.js",
     "start:dev": "parallelshell 'webpack-dev-server --content-base public --port=4444' 'node build/server/index.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:client": "webpack --progress",
+    "build:client": "webpack --progress -p",
     "build:server": "babel src/server -d build/server",
     "build": "npm run build:client && npm run build:server"
   },

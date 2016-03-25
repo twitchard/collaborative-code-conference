@@ -153,9 +153,13 @@ var loadGistButton   = document.querySelector('#load-gist');
 var createGistButton = document.querySelector('#create-gist');
 loadGistButton.addEventListener('click', g.loadGistModal.bind(g));
 createGistButton.addEventListener('click', g.createGistModal.bind(g));
+new bsn.Popover(createGistButton, {trigger: 'click'});  //handle 'create' not implemented yet
+
+// Listen for gist instance to emit file events that we then put in the editor
 g.on('file', function(file) {
   cm.setValue(file);
 });
+
 
 module.exports = {
   CodeMirror: CodeMirror,

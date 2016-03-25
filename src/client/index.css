@@ -1,6 +1,6 @@
 #code-options {
   position: relative;
-  margin: 0 0 0 30px;
+  margin: 5px 0 0 40px;
   z-index: 10;
 }
 
@@ -10,6 +10,7 @@
   right: 50px;
   width: 25%;
   z-index: 20;
+  margin: 50px 0 0 0;
 }
 
 #local-media {
@@ -48,3 +49,12 @@
   font-family: monospace;
   visibility: hidden;
 }
+
+/*
+ * For bootstrap.native styling
+ */
+/* enables CSS3 transition for simple collapses, accordion and also navbar in responsive view */
+.collapse { transition: height .3s ease-out; }
+
+/* styles the close button for the dismissible popovers */
+.popover .close { position: absolute; top: 7px; right: 10px; }

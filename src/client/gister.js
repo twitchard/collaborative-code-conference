@@ -37,8 +37,8 @@ Gister.prototype.loadGistModal = function() {
             list += '<li><a href="#">' + fileName + '</a></li>';
           }
 
-          var newBody = modalBody + '<br><br><p>Which file from the gist?</p><ul>' + list + '</ul>';
-          updateModalBody(modal, newBody);
+          updateModalBody(modal,
+            modalBody + '<br><br><p>Which file from the gist?</p><ul>' + list + '</ul>');
 
           // Clicking on a link loads the gist file
           var links = modal.modal.querySelectorAll('a');
@@ -54,15 +54,15 @@ Gister.prototype.loadGistModal = function() {
           new bsn.Button(e.target, 'reset');
         } else {
           var error = 'No files found in gist.';
-          var newBody = modalBody + '<h5 style="color: #aa2222;">' + error + '</h5>'
-          updateModalBody(modal, newBody);
+          updateModalBody(modal,
+            modalBody + '<h5 style="color: #aa2222;">' + error + '</h5>');
           document.querySelector('#gist-url').value = url;
           new bsn.Button(e.target, 'reset');
         }
       })
       .catch(function(error) {
-        var newBody = modalBody + '<h5 style="color: #aa2222;">' + error + '</h5>'
-        updateModalBody(modal, newBody);
+        updateModalBody(modal,
+          modalBody + '<h5 style="color: #aa2222;">' + error + '</h5>');
         document.querySelector('#gist-url').value = url;
         new bsn.Button(e.target, 'reset');
         throw error;
@@ -71,10 +71,10 @@ Gister.prototype.loadGistModal = function() {
 }
 
 Gister.prototype.createGistModal = function() {
-  var frame = document.querySelector('#gistModal');
-  var modalBody   = '<p>This is where you fill up content you know, etc.</p>';
-
-  createModal(frame, 'Save to Gist', modalBody, 'Save').open();
+  // var frame = document.querySelector('#gistModal');
+  // var modalBody   = '<p>This is where you fill up content you know, etc.</p>';
+  //
+  // createModal(frame, 'Save to Gist', modalBody, 'Save').open();
 }
 
 function getGistFiles(gistUrl) {
