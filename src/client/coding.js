@@ -160,6 +160,34 @@ g.on('file', function(file) {
   cm.setValue(file);
 });
 
+// Buttons to scale editor font size up and down
+var scaleFactor = 1.2;
+var fontBigger = document.querySelector('.size-control.bigger');
+fontBigger.addEventListener('click', function() {
+  scaleFontSize(cm.getWrapperElement(), scaleFactor);
+  cm.refresh();
+  cm.focus();
+});
+
+var fontSmaller = document.querySelector('.size-control.smaller');
+fontSmaller.addEventListener('click', function() {
+  scaleFontSize(cm.getWrapperElement(), 1/scaleFactor);
+  cm.refresh();
+  cm.focus();
+});
+
+function scaleFontSize(elem, scalingFactor) {
+  var currentSize;
+  if (elem.style.fontSize && elem.style.fontSize.length > 0) {
+    currentSize = elem.style.fontSize;
+  } else {
+    currentSize = window.getComputedStyle(cm.getWrapperElement()).fontSize
+  }
+  currentSize = parseFloat(currentSize.replace('px', ''));
+
+  elem.style.fontSize = currentSize * scalingFactor + 'px';
+}
+
 
 module.exports = {
   CodeMirror: CodeMirror,
