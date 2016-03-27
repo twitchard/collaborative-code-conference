@@ -141,6 +141,7 @@ ws.onopen = function() {
 
   ws.onclose = function() {
     document.querySelector('#editor-connection-status').style.visibility = 'visible';
+    link.removeAllListeners('data');
   };
 };
 
