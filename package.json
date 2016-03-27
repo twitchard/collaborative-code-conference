@@ -13,7 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:client": "webpack --progress -p",
     "build:server": "babel src/server -d build/server",
-    "build": "npm run build:client && npm run build:server"
+    "build": "npm run build:client && npm run build:server",
+    "build:dev": "parallelshell 'babel src/server -d build/server -w' 'webpack -p -w'"
   },
   "author": {
     "name": "Chris Castle",
