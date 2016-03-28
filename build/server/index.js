@@ -42,7 +42,7 @@ app.use(serve);
  *
  *
  * Setup web request routing:
- *  /           - Instructions and about page
+ *  /           - Instructions and home page
  *  /token      - Generates and returns a Twilio token with Programmable Video capabilities
  *  /[docName]  - Connect to doc [docName], where [docName] is any non-empty string except 'token'
  *
@@ -66,8 +66,8 @@ app.get('/', function (req, res) {
   //  - single button that goes to /[CONTENTS OF INPUT BOX]
   //  - link to github repo ("setup your own disposable code conference")
   //  - link to blog post
-  log.debug('Serving about.html');
-  res.sendFile(path.join(__dirname, '..', 'client', 'about.html'));
+  log.debug('Serving home.html');
+  res.sendFile(path.join(__dirname, '..', 'client', 'home.html'));
 });
 
 // Handle /token route
