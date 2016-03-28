@@ -12,7 +12,9 @@ var identity;
 
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
-  alert('Video and audio is not available in your browser, but you can still use the collaborative editor!');
+  alert('Your browser does not support WebRTC, which is required for video and audio.\n\n'
+    + 'You can still use the collaborative editor, though!\n\n'
+    + 'Use Chrome or Firefox to experience video and audio.');
   document.querySelector('#connect').setAttribute('disabled', 'disabled');
   document.querySelector('#connect-dropdown').setAttribute('disabled', 'disabled');
 }
