@@ -3,6 +3,8 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
+var bsn = require("bootstrap.native");
+
 var conversationsClient;
 var activeConversation;
 var previewMedia;
@@ -11,6 +13,8 @@ var identity;
 // Check for WebRTC
 if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
   alert('Video and audio is not available in your browser, but you can still use the collaborative editor!');
+  document.querySelector('#connect').setAttribute('disabled', 'disabled');
+  document.querySelector('#connect-dropdown').setAttribute('disabled', 'disabled');
 }
 
 var docName = window.location.pathname.slice(1);
@@ -74,6 +78,9 @@ function clientConnected() {
 
   // Bind button to connect to audio/video conversation
   document.getElementById('connect').onclick = function() {
+    new bsn.Button(document.querySelector('#connect'), 'loading');
+    new bsn.Button(document.querySelector('#connect-dropdown'), 'loading');
+
     var docName = window.location.pathname.slice(1);
     var username = 'the-other-user'; //TODO: prompt user for their name
 
@@ -94,6 +101,7 @@ function clientConnected() {
           console.log('Sending invite to', docName);
           conversationsClient.inviteToConversation(docName, options).then(conversationStarted, function(error) {
             console.error('Unable to create conversation', error);
+            // FIXME: show error to user, un-disable button, and change identity back to docName
           });
         }
       },
@@ -116,11 +124,13 @@ function conversationStarted(conversation) {
   conversation.on('participantConnected', function (participant) {
     console.log("Participant '" + participant.identity + "' connected");
     participant.media.attach('#remote-media');
+    toggleConnectButton();
   });
 
   // When a participant disconnects, note in log
   conversation.on('participantDisconnected', function (participant) {
     console.log("Participant '" + participant.identity + "' disconnected");
+    toggleConnectButton();
   });
 
   // When the conversation ends, stop capturing local video
@@ -130,6 +140,23 @@ function conversationStarted(conversation) {
     conversation.disconnect();
     activeConversation = null;
   });
+}
+
+function toggleConnectButton() {
+  var connectButton = document.querySelector('#connect');
+  var connectDropdownButton = document.querySelector('#connect-dropdown');
+
+  if (connectButton.hasAttribute('disabled') && connectButton.hasAttribute('data-original-text')) {
+    new bsn.Button(connectButton, 'reset');
+    connectButton.setAttribute('disabled', 'disabled'); //TODO: change this to 'Disconnect'
+    connectDropdownButton.setAttribute('disabled', 'disabled');
+  } else if (connectButton.hasAttribute('disabled')) {
+    connectButton.removeAttribute('disabled');
+    connectDropdownButton.removeAttribute('disabled');
+  } else {
+    connectButton.setAttribute('disabled', 'disabled'); //TODO: change this to 'Disconnect'
+    connectDropdownButton.setAttribute('disabled', 'disabled');
+  }
 }
 
 //  Local video preview
