@@ -1,3 +1,4 @@
+<img src="https://raw.githubusercontent.com/crcastle/collaborative-code-conference/master/build/client/img/codie.png" width="100px">
 ## Why do I want this?
 - Need to do some quick code collaboration with someone remotely?
 - Need a simple way to do a remote coding interview?
@@ -65,6 +66,11 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 * [Hive.js](http://hivejs.org)
 * Google technical interviews
 
+## Thanks
+* [Marcel Klehr](https://github.com/marcelklehr) for [gulf](https://github.com/marcelklehr/gulf) and [gulf-codemirror](https://github.com/marcelklehr/gulf-codemirror)
+* [Joseph Gentle](https://github.com/josephg) and [Devon Govett](https://github.com/devongovett) for [Operational Transformation types](https://github.com/ottypes/text) and [useful docs](https://github.com/ottypes/docs)
+* [Marijn Haverbeke](https://github.com/marijnh) for [CodeMirror](http://codemirror.net)
+
 ## Contributing
 [![Build Status](https://travis-ci.org/code-interview/oneclick-backend.svg?branch=master)](https://travis-ci.org/code-interview/oneclick-backend) [![Code Climate](https://codeclimate.com/github/code-interview/oneclick-backend/badges/gpa.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Issue Count](https://codeclimate.com/github/code-interview/oneclick-backend/badges/issue_count.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Test Coverage](https://codeclimate.com/github/code-interview/oneclick-backend/badges/coverage.svg)](https://codeclimate.com/github/code-interview/oneclick-backend/coverage)
 
@@ -78,10 +84,10 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 * [x] Add sexy screenshot to README
 * [ ] Add sexier screenshot to README
 * [ ] Add input box for user to provide name before sending video invite
-* [ ] Add buttons to increase and decrease editor font size
+* [x] Add buttons to increase and decrease editor font size
 * [ ] Add button to 'export to gist'
 * [ ] Write tests
-* [ ] Add project logo to app.json and README
+* [x] Add project logo to app.json and README
 * [ ] Add a LICENSE
 * [ ] Add CONTRIBUTING guidelines
 * [ ] Add codeclimate coverage badge to README
