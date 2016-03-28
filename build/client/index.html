@@ -18,7 +18,7 @@
     </div>
 
     <div id="code-options">
-      <img id="logo" src="/img/codie-rect-alpha.png">
+      <a id="logo-link" data-toggle="modal" href="#aboutModal"><img id="logo" src="/img/codie-rect-alpha.png"></a>
       <div id="editor-connection-status" style="">Editor connection down. Please refresh.</div>
       <div class="btn-group">
         <button style="width: 13em; text-align: left;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" tabindex="1">
@@ -57,6 +57,23 @@
     		<div class="modal-content">
     		</div>
     	</div>
+    </div>
+
+    <!-- about modal -->
+    <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body" style="text-align: center;">
+            <img src="/img/codie.png" style="width: 100px;"><br><br>
+            <p>codie was inspired by painful remote technical interviews.</p>
+            <p>Read about codie's birth <a href="https://crc.io/blog/2016/03/collaborative-code-conference/" target="_blank">here</a>.</p>
+            <p>Create one for yourself or see the code <a href="https://github.com/crcastle/collaborative-code-conference#readme" target="_blank">here</a>.</p>
+            <br><br>
+            <p>Codie was created by <a href="https://crc.io" target="_blank">Chris Castle</a>, <a href="https://twitter.com/crc" target="_blank">@crc</a>.</p>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>

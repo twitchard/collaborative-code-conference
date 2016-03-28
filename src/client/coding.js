@@ -194,6 +194,5 @@ module.exports = {
   CodeMirror: CodeMirror,
   cm: cm,
   editableDoc: editableDoc,
-  link: link,
-  bsn: bsn
+  link: link
 };
