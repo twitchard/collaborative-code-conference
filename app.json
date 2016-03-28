@@ -12,6 +12,7 @@
   ],
   "website": "https://github.com/crcastle/collaborative-code-coference",
   "repository": "https://github.com/crcastle/collaborative-code-coference",
+  "logo": "https://raw.githubusercontent.com/crcastle/collaborative-code-conference/master/build/client/img/codie.png",
   "success_url": "/",
   "addons": [],
   "env": {
