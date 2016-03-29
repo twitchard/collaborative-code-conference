@@ -9,7 +9,7 @@ Use this project to create an (almost) free coding web conference in less than 5
 
 Most importantly, you don't need to do any local development to use it: click the purple button, configure some stuff, start a conference room, send the URL to the attendee.  That's it!
 
-![Screenshot](http://cl.ly/0c0U1k1W0n1n/Screen%20Shot%202016-03-17%20at%201.31.41%20PM.png)
+![Screenshot](https://raw.githubusercontent.com/crcastle/collaborative-code-conference/master/build/client/img/code-editor-screenshot.png)
 
 ## Setup Instructions
 Setup will take about 5 minutes the first time.  After the first time, it's about 30 seconds.  
