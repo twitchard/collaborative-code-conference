@@ -123,7 +123,7 @@ var themes = [
 for (var j = 0; j < themes.length; j++) {
   themeSelector.appendChild(themeListItem(themes[j].name, themes[j].classPrefix));
 }
-document.querySelector('#solarized-dark').click();
+document.querySelector('#solarized-light').click();
 
 var editableDoc = bindEditor(cm);
 var link = editableDoc.masterLink();
