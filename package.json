@@ -21,7 +21,7 @@
     "email": "github@crc.io",
     "url": "https://crc.io"
   },
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
@@ -42,9 +42,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "gulf": "^4.0.3",
-    "gulf-mongodb": "^0.2.1",
     "loglevel": "^1.4.0",
-    "mongoose": "^4.4.7",
     "ot-text": "^1.0.1",
     "twilio": "^3.0.0-edge",
     "ws": "^1.0.1"
