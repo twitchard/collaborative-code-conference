@@ -75,21 +75,5 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 [![Build Status](https://travis-ci.org/code-interview/oneclick-backend.svg?branch=master)](https://travis-ci.org/code-interview/oneclick-backend) [![Code Climate](https://codeclimate.com/github/code-interview/oneclick-backend/badges/gpa.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Issue Count](https://codeclimate.com/github/code-interview/oneclick-backend/badges/issue_count.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Test Coverage](https://codeclimate.com/github/code-interview/oneclick-backend/badges/coverage.svg)](https://codeclimate.com/github/code-interview/oneclick-backend/coverage)
 
 ## License
-
-## TODO
-* [x] Prototype collaborative coding page
-* [x] Define setup flow (instructions/about homepage)
-* [x] Define join flow
-* [x] Style
-* [x] Add sexy screenshot to README
-* [ ] Add sexier screenshot to README
-* [ ] Add input box for user to provide name before sending video invite
-* [x] Add buttons to increase and decrease editor font size
-* [ ] Add button to 'export to gist'
-* [ ] Write tests
-* [x] Add project logo to app.json and README
-* [ ] Add a LICENSE
-* [ ] Add CONTRIBUTING guidelines
-* [ ] Add codeclimate coverage badge to README
-* [ ] Configure Travis and add badge to README
-* [ ] Clean-up dead code
+MIT
+See [LICENSE](LICENSE)
