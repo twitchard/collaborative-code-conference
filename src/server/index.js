@@ -126,6 +126,10 @@ server.listen({port: process.env.PORT || 4444}, function() {
   log.info('Server running in %s mode and listening on %s:%s', env, host, port);
 });
 
+exports.closeServer = function () {
+  server.close();
+}
+
 /*
  *
  * Setup WebSocket server
