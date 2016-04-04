@@ -5,29 +5,36 @@ var base_url = 'http://localhost:4444/';
 
 var app = require('./../build/server/index.js');
 
-describe('the app', function(){
+
+describe('the app', function() {
   describe('GET /', function() {
-    it('returns status code 200', function(done) {
-      request.get(base_url, function(error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        // console.log(response.request.uri.href);
+    var error    = null,
+        response = null,
+        body     = null;
+
+    before('request GET /', function(done) {
+      request.get(base_url, function(err, res, bod) {
+        error    = err;
+        response = res;
+        body     = bod;
         done();
       });
     });
 
-    it('response body contains "a collaborative code conference tool"', function(done) {
-      request.get(base_url, function(error, response, body) {
-        expect(body).to.contain('a collaborative code conference tool');
-        done();
-      });
+    after(function() {
+      app.closeServer();
     });
 
-    it('response body contains "Start Writing Code" button', function(done) {
-      request.get(base_url, function(error, response, body) {
-        expect(body).to.contain('Start Writing Code');
-        app.closeServer();
-        done();
-      });
+    it('returns status code 200', function() {
+      expect(response.statusCode).to.equal(200);
+    });
+
+    it('response body contains "a collaborative code conference tool"', function() {
+      expect(body).to.contain('a collaborative code conference tool');
+    });
+
+    it('response body contains "Start Writing Code" button', function() {
+      expect(body).to.contain('Start Writing Code');
     });
   });
 });
