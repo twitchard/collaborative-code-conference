@@ -61,7 +61,7 @@ app.get('*', function(req, res, next) {
 
 // Handle / route
 app.get('/', function(req, res) {
-  // TODO: replace this with a nice homepage like talky.io:
+  // Serve static page that includes
   //  - instructions
   //  - single input box with sample document name
   //  - single button that goes to /[CONTENTS OF INPUT BOX]
