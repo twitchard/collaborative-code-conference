@@ -72,7 +72,7 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 * [Marijn Haverbeke](https://github.com/marijnh) for [CodeMirror](http://codemirror.net)
 
 ## Contributing
-[![Build Status](https://travis-ci.org/code-interview/oneclick-backend.svg?branch=master)](https://travis-ci.org/code-interview/oneclick-backend) [![Code Climate](https://codeclimate.com/github/code-interview/oneclick-backend/badges/gpa.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Issue Count](https://codeclimate.com/github/code-interview/oneclick-backend/badges/issue_count.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Test Coverage](https://codeclimate.com/github/code-interview/oneclick-backend/badges/coverage.svg)](https://codeclimate.com/github/code-interview/oneclick-backend/coverage)
+[![Build Status](https://travis-ci.org/crcastle/collaborative-code-conference.svg?branch=master)](https://travis-ci.org/crcastle/collaborative-code-conference) [![Code Climate](https://codeclimate.com/github/code-interview/oneclick-backend/badges/gpa.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Issue Count](https://codeclimate.com/github/code-interview/oneclick-backend/badges/issue_count.svg)](https://codeclimate.com/github/code-interview/oneclick-backend) [![Test Coverage](https://codeclimate.com/github/code-interview/oneclick-backend/badges/coverage.svg)](https://codeclimate.com/github/code-interview/oneclick-backend/coverage)
 
 ## License
 MIT
