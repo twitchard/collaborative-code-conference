@@ -21,11 +21,11 @@
       "value": ""
     },
     "TWILIO_API_KEY": {
-      "description": "Twilio Video API Key SID - generate one here https://www.twilio.com/user/account/video/dev-tools/api-keys",
+      "description": "Twilio Video API Key SID - generate this and the next value here https://www.twilio.com/user/account/video/dev-tools/api-keys",
       "value": ""
     },
     "TWILIO_API_SECRET": {
-      "description": "Twilio API authentication secret - get one here https://www.twilio.com/user/account/video/dev-tools/api-keys",
+      "description": "Twilio API authentication secret - you should have copied this value from the same place as the previous value",
       "value": ""
     },
     "TWILIO_CONFIGURATION_SID": {
