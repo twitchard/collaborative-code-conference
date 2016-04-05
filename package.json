@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node build/server/index.js",
     "start:dev": "parallelshell 'webpack-dev-server --content-base public --port=4444' 'node build/server/index.js'",
-    "test": "mocha",
+    "test": "istanbul cover _mocha -- test",
     "build:client": "webpack --progress -p",
     "build:server": "babel src/server -d build/server",
     "build": "npm run build:client && npm run build:server",
@@ -39,6 +39,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "gulf-codemirror": "^4.0.2",
     "isomorphic-fetch": "^2.2.1",
+    "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "parallelshell": "^2.0.0",
     "request": "^2.69.0",
