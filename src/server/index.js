@@ -55,7 +55,7 @@ app.get('*', function(req, res, next) {
     log.info('Redirecting request to HTTPS');
     res.redirect('https://' + req.headers.host + req.url);
   } else {
-    next();
+    return next();
   }
 });
 
@@ -107,7 +107,7 @@ var getToken = function(request, response) {
 // is any non-empty, URL-valid string except 'token'
 var serveDocument = function(req, res, next) {
   if (req.path === '/token') {
-    next();
+    return next();
   } else { // path is a document name
     log.debug('Serving index.html');
     res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
