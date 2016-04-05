@@ -76,4 +76,5 @@ Have an unanswered question?  [Ask it here](https://github.com/crcastle/collabor
 
 ## License
 MIT
+
 See [LICENSE](LICENSE)
