@@ -21,9 +21,6 @@ describe('the app', function() {
       });
     });
 
-    after(function() {
-      app.closeServer();
-    });
 
     it('returns status code 200', function() {
       expect(response.statusCode).to.equal(200);
@@ -36,5 +33,41 @@ describe('the app', function() {
     it('response body contains "Start Writing Code" button', function() {
       expect(body).to.contain('Start Writing Code');
     });
+  });
+
+  describe('GET /token', function() {
+    var error    = null,
+        response = null,
+        body     = null,
+        jsonBody = null;
+
+    var identity = 'test-identity';
+    var url = base_url + 'token?identity=' + identity;
+
+    before('request GET /token', function(done) {
+      request.get(url, function(err, res, bod) {
+        error    = err;
+        response = res;
+        body     = bod;
+        jsonBody = JSON.parse(body);
+        done();
+      });
+    });
+
+    it('returns status code 200', function() {
+      expect(response.statusCode).to.equal(200);
+    });
+
+    it('contains keys identity and token', function() {
+      expect(jsonBody).to.have.keys(['identity', 'token']);
+    });
+
+    it('identity value matches that provided in request query string', function() {
+      expect(jsonBody.identity).to.equal(identity);
+    });
+  });
+
+  after(function() {
+    app.closeServer();
   });
 });
