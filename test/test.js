@@ -67,6 +67,33 @@ describe('the app', function() {
     });
   });
 
+  describe('GET /', function() {
+    var error    = null,
+        response = null,
+        body     = null;
+
+    var conferenceRoomName = 'testroom';
+    var url = base_url + conferenceRoomName;
+
+    before('request GET /' + conferenceRoomName, function(done) {
+      request.get(url, function(err, res, bod) {
+        error    = err;
+        response = res;
+        body     = bod;
+        done();
+      });
+    });
+
+
+    it('returns status code 200', function() {
+      expect(response.statusCode).to.equal(200);
+    });
+
+    it('includes <textarea>');
+    it('includes webrtc media div(s)');
+    it('includes buttons');
+  });
+
   after(function() {
     app.closeServer();
   });
