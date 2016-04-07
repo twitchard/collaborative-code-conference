@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Collaborative Code Conference</title>
+
+    <!-- Bootstrap 3 core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+  </head>
+  <body>
+    <div id="conf">
+      <div id="remote-media-wrapper">
+        <div id="remote-media"></div>
+        <div id="local-media"></div>
+      </div>
+    </div>
+
+    <div id="code-options">
+      <a id="logo-link" data-toggle="modal" href="#aboutModal"><img id="logo" src="/img/codie-rect-alpha.png"></a>
+      <div id="editor-connection-status" style="">Oh no! The editor connection is down. Please reload the page.</div>
+      <div class="btn-group">
+        <button style="width: 13em; text-align: left;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" tabindex="1">
+          <span id="language-button-text">Language</span>
+          <span class="caret"></span>
+        </button>
+        <ul id="language-dropdown" class="dropdown-menu" role="menu">
+        </ul>
+      </div>
+      <div class="btn-group">
+        <button style="width: 13em; text-align: left;" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" tabindex="2">
+          <span id="theme-button-text">Theme</span>
+          <span class="caret"></span>
+        </button>
+        <ul id="theme-dropdown" class="dropdown-menu" role="menu">
+        </ul>
+      </div>
+      <button type="button" class="size-control bigger btn btn-secondary" name="Increase font size"><i class="fa fa-plus"></i></button>
+      <button type="button" class="size-control smaller btn btn-secondary" name="Decrease font size"><i class="fa fa-minus"></i></button>
+      <button type="button" class="btn btn-primary" id="load-gist" tabindex="3">Load <i class="fa fa-github"></i> Gist</button>
+      <button data-toggle="popover" data-content="See <a target='_blank' href='https://github.com/crcastle/collaborative-code-conference/issues/3'>GitHub</a> for status." data-title="Not yet implemented" data-trigger="click" type="button" class="btn btn-primary" id="create-gist" tabindex="3">Save <i class="fa fa-github"></i> Gist</button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-success" name="Connect to Video" id="connect" data-loading-text="Connecting...">Connect to Video</button>
+        <button type="button" class="btn btn-success dropdown-toggle" id="connect-dropdown" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false" tabindex="0" data-loading-text="&#xf0d7;" style="font-family: FontAwesome;">&#xf0d7;</button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a id="button-preview" href="#">Preview My Camera</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="editor"></div>
+
+    <!-- modal frame -->
+    <div id="gistModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gistModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    		</div>
+    	</div>
+    </div>
+
+    <!-- about modal -->
+    <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body" style="text-align: center;">
+            <img src="/img/codie.png" style="width: 100px;"><br><br>
+            <p>codie was inspired by painful remote technical interviews in Google Docs.</p>
+            <p>Read about codie's birth <a href="https://crc.io/blog/2016/03/collaborative-code-conference/" target="_blank">here</a>.</p>
+            <p>Create one for yourself or see the code <a href="https://github.com/crcastle/collaborative-code-conference#readme" target="_blank">here</a>.</p>
+            <br><br>
+            <p>codie was created by <a href="https://crc.io" target="_blank">Chris Castle</a>, <a href="https://twitter.com/crc" target="_blank">@crc</a>.</p>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="//media.twiliocdn.com/sdk/js/common/v0.1/twilio-common.min.js"></script>
+    <script src="//media.twiliocdn.com/sdk/js/conversations/v0.13/twilio-conversations.min.js"></script>
+    <script src='/build.js'></script>
+  </body>
+</html>

@@ -37,6 +37,7 @@
     "eslint": "^2.6.0",
     "eslint-plugin-mocha": "^2.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
     "gulf-codemirror": "^4.0.2",
     "isomorphic-fetch": "^2.2.1",
     "istanbul": "^0.4.2",

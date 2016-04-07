@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Setup a collaborative coding session with one click -- audio, video, shared coding">
+    <meta name="author" content="Chris Castle">
+
+    <title>Collaborative Code Conference</title>
+
+    <!-- Github fork me ribbon! -->
+    <link rel="stylesheet" href="/css/gh-fork-ribbon.css">
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/css/gh-fork-ribbon.ie.css">
+    <![endif]-->
+    <style>
+      .github-fork-ribbon   { background-color: #9c082e; }
+
+      .github-fork-ribbon a:link,
+      .github-fork-ribbon a:visited,
+      .github-fork-ribbon a:hover,
+      .github-fork-ribbon a:active { color: #fff; }
+
+      body {
+        /*background-color: #022B35;*/
+        background-color: #eee;
+        text-align: center;
+        color: #222;
+        font-family: sans-serif;
+      }
+
+      a { color: #222; }
+      a:link,
+      a:visited,
+      a:hover,
+      a:active { color: #222; }
+
+      img#screenshot {
+        width: 40%;
+        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+      }
+
+      #docAddress {
+        clear: both;
+        width: 100%;
+      }
+
+      #url {
+        font-family: monospace;
+        color: #022b36;
+        font-family: monospace;
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      input#docName {
+        background-color: #eee;
+        border: 0;
+        border-bottom: 1px solid #666;
+        color: #222;
+        font-family: monospace;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 0;
+        padding-left: 0;
+        width: 14rem;
+      }
+
+      input#docName:focus {
+        outline-width: 0;
+      }
+
+      .go-to-doc {
+      	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      	box-shadow:inset 0px 1px 0px 0px #ffffff;
+      	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+      	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+      	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+      	background-color:#ffffff;
+      	-moz-border-radius:6px;
+      	-webkit-border-radius:6px;
+      	border-radius:6px;
+      	border:1px solid #dcdcdc;
+      	display:inline-block;
+      	cursor:pointer;
+      	color:#666666;
+      	font-family:Arial;
+      	font-size:15px;
+      	font-weight:bold;
+      	padding:6px 24px;
+      	text-decoration:none;
+      	text-shadow:0px 1px 0px #ffffff;
+      }
+      .go-to-doc:hover {
+      	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+      	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+      	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+      	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+      	background-color:#f6f6f6;
+      }
+      .go-to-doc:active {
+      	position:relative;
+      	top:1px;
+      }
+
+
+      img#gif {
+        height: 5em;
+        border: 1px solid #ddd;
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Begin "WORK IN-PROGRESS" RIBBON -->
+    <div class="github-fork-ribbon-wrapper right">
+      <div class="github-fork-ribbon">
+          <a href="https://github.com/crcastle/collaborative-code-conference#readme">MAKE YOUR OWN</a>
+      </div>
+    </div>
+    <!-- End "WORK IN-PROGRESS" RIBBON -->
+
+    <img style="width: 150px;" src="/img/codie.png">
+    <h3>a collaborative code conference tool</h3>
+
+    <img id="screenshot" src="/img/code-editor-screenshot.png">
+
+    <br><br><br>
+    <div id="docAddress">
+      <span id="url">https://codie.herokuapp.com/</span><input id="docName" type="text" autocorrect="off" autocapitalize="off" autocomplete="off" placeholder="name your room">
+      <a href="#" class="go-to-doc" id="go-to-doc">
+        Start Writing Code
+      </a>
+    </div>
+
+    <br><br><br><br>
+    <img id="gif" src="/img/shiba-programmer-squished.gif">
+
+    <div id="footer">
+      <p>by <a href="https://crc.io">Chris Castle</a>, <a href="https://twitter.com/crc">@crc</a> | <a href="https://crc.io/blog/2016/03/collaborative-code-conference/">About</a></p>
+    </div>
+    <script>
+      var url = document.querySelector('#url');
+      url.innerHTML = location.origin + '/';
+
+      document.addEventListener("DOMContentLoaded", function(event) {
+        document.querySelector('#docName').focus();
+      });
+
+      function goToDoc(e) {
+        var docName = document.querySelector('#docName').value;
+        if (isValid(docName)) {
+          var docUrl = location.origin + '/' + docName;
+          window.location.href = docUrl;
+        } else {
+          alert('Invalid name. Alphnumeric characters only.');
+        }
+        e.preventDefault();
+      };
+      var button = document.querySelector('#go-to-doc');
+      button.addEventListener('click', goToDoc);
+
+      var input = document.querySelector('#docName');
+      input.addEventListener('keyup', function(e) {
+        if (e.keyCode === 13) goToDoc(e);
+      });
+
+      function isValid(docName) {
+        return !!docName.match(/^[a-zA-Z0-9]+$/)
+      }
+    </script>
+  </body>
+</html>
