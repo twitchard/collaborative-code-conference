@@ -39,12 +39,14 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "gulf-codemirror": "^4.0.2",
+    "html-loader": "^0.4.3",
     "isomorphic-fetch": "^2.2.1",
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
     "parallelshell": "^2.0.0",
     "request": "^2.69.0",
     "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.14"
   },
   "dependencies": {
