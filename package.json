@@ -50,12 +50,12 @@
     "webpack": "^1.12.14"
   },
   "dependencies": {
-    "express": "^4.13.4",
-    "gulf": "^4.0.3",
-    "loglevel": "^1.4.0",
-    "ot-text": "^1.0.1",
-    "twilio": "^3.0.0-edge",
-    "ws": "^1.0.1"
+    "express": "4.13.4",
+    "gulf": "4.0.4",
+    "loglevel": "1.4.0",
+    "ot-text": "1.0.1",
+    "twilio": "3.2.0-edge",
+    "ws": "1.0.1"
   },
   "engines": {
     "node": "5.10.1",
