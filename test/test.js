@@ -6,14 +6,14 @@ var base_url = 'http://localhost:4444/';
 var app = require('./../build/server/index.js');
 
 
-describe('the app', function() {
-  describe('GET /', function() {
+describe('the app', () => {
+  describe('GET /', () => {
     var error    = null,
         response = null,
         body     = null;
 
-    before('request GET /', function(done) {
-      request.get(base_url, function(err, res, bod) {
+    before('request GET /', done => {
+      request.get(base_url, (err, res, bod) => {
         error    = err;
         response = res;
         body     = bod;
@@ -22,30 +22,30 @@ describe('the app', function() {
     });
 
 
-    it('returns status code 200', function() {
+    it('returns status code 200', () => {
       expect(response.statusCode).to.equal(200);
     });
 
-    it('response body contains "a collaborative code conference tool"', function() {
+    it('response body contains "a collaborative code conference tool"', () => {
       expect(body).to.contain('a collaborative code conference tool');
     });
 
-    it('response body contains "Start Writing Code" button', function() {
+    it('response body contains "Start Writing Code" button', () => {
       expect(body).to.contain('Start Writing Code');
     });
   });
 
-  describe('GET /token', function() {
+  describe('GET /token', () => {
     var error    = null,
         response = null,
         body     = null,
         jsonBody = null;
 
     var identity = 'test-identity';
-    var url = base_url + 'token?identity=' + identity;
+    var url = `${base_url}token?identity=${identity}`;
 
-    before('request GET /token', function(done) {
-      request.get(url, function(err, res, bod) {
+    before('request GET /token', done => {
+      request.get(url, (err, res, bod) => {
         error    = err;
         response = res;
         body     = bod;
@@ -54,29 +54,29 @@ describe('the app', function() {
       });
     });
 
-    it('returns status code 200', function() {
+    it('returns status code 200', () => {
       expect(response.statusCode).to.equal(200);
     });
 
-    it('contains keys identity and token', function() {
+    it('contains keys identity and token', () => {
       expect(jsonBody).to.have.keys(['identity', 'token']);
     });
 
-    it('identity value matches that provided in request query string', function() {
+    it('identity value matches that provided in request query string', () => {
       expect(jsonBody.identity).to.equal(identity);
     });
   });
 
-  describe('GET /', function() {
+  var docName = 'testroom';
+  describe(`GET /${docName}`, () => {
     var error    = null,
         response = null,
         body     = null;
 
-    var conferenceRoomName = 'testroom';
-    var url = base_url + conferenceRoomName;
+    var url = base_url + docName;
 
-    before('request GET /' + conferenceRoomName, function(done) {
-      request.get(url, function(err, res, bod) {
+    before(`request GET /${docName}`, done => {
+      request.get(url, (err, res, bod) => {
         error    = err;
         response = res;
         body     = bod;
@@ -85,16 +85,24 @@ describe('the app', function() {
     });
 
 
-    it('returns status code 200', function() {
+    it('returns status code 200', () => {
       expect(response.statusCode).to.equal(200);
     });
 
-    it('includes <textarea>');
-    it('includes webrtc media div(s)');
-    it('includes buttons');
+    it('includes an editor div', () => {
+      expect(body).to.include('<div id="editor">');
+    });
+
+    it('includes a conf div', () => {
+      expect(body).to.include('<div id="conf">');
+    });
+
+    it('includes a code-options div', () => {
+      expect(body).to.include('<div id="code-options">');
+    });
   });
 
-  after(function() {
+  after( () =>{
     app.closeServer();
   });
 });
