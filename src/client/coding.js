@@ -18,6 +18,7 @@ require('codemirror/mode/perl/perl');
 require('codemirror/mode/php/php');
 require('codemirror/mode/ruby/ruby');
 require('codemirror/mode/shell/shell');
+require('codemirror/mode/sql/sql');
 require('codemirror/mode/vb/vb');
 
 // FIXME: figure out how to makes the themes configurable
@@ -82,6 +83,7 @@ var languages = [
   { name: 'PHP',          mime: 'text/x-php' },
   { name: 'Ruby',         mime: 'text/x-ruby' },
   { name: 'Shell',        mime: 'text/x-sh' },
+  { name: 'SQL',          mime: 'text/x-sql' },
   { name: 'XML',          mime: 'application/xml' },
   { name: 'VB.NET',       mime: 'text/x-vb' }
 ]
