@@ -28,7 +28,7 @@ Gister.prototype.loadGistModal = function() {
       .then(function(files) {
         var fileNames = Object.keys(files);
         var fileCount = fileNames.length;
-        if (fileCount == 1) {
+        if (fileCount === 1) {
           myself.emit('file', files[fileNames[0]].content);
           modal.close();
         } else if (fileCount > 1) {

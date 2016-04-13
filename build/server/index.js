@@ -1,5 +1,5 @@
 // Load config vars
-if (process.env.NODE_ENV != 'production') require('dotenv').load();
+if (process.env.NODE_ENV !== 'production') require('dotenv').load();
 var log = require('loglevel');
 log.setLevel(process.env.LOG_LEVEL || 'debug');
 log.info('Log level set to', process.env.LOG_LEVEL);
@@ -50,7 +50,7 @@ app.use(serve);
 */
 // Redirect http requests to https when in production
 app.get('*', function (req, res, next) {
-  if (req.headers['x-forwarded-proto'] != 'https' && process.env.NODE_ENV == 'production') {
+  if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV === 'production') {
     log.info('Redirecting request to HTTPS');
     res.redirect('https://' + req.headers.host + req.url);
   } else {
@@ -122,6 +122,7 @@ server.listen({ port: process.env.PORT || 4444 }, function () {
   log.info('Server running in %s mode and listening on %s:%s', env, host, port);
 });
 
+// Expose this function for tests
 exports.closeServer = function () {
   server.close();
 };
