@@ -100,6 +100,13 @@ describe('the app', () => {
     it('includes a code-options div', () => {
       expect(body).to.include('<div id="code-options">');
     });
+
+    it('allows a websocket connection');
+    it('responds to a websocket close request');
+    
+    it('responds to gulf doc changes over websocket');
+    it('returns the same text for two documents with the same name');
+    it('returns different text for two documents with different names');
   });
 
   after( () =>{
