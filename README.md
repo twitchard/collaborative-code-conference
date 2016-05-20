@@ -12,10 +12,10 @@ Most importantly, you don't need to do any local development to use it: click th
 ![Screenshot](https://raw.githubusercontent.com/crcastle/collaborative-code-conference/master/build/client/img/code-editor-screenshot.png)
 
 ## Setup Instructions
-Setup will take about 5 minutes the first time.  After the first time, it's about 30 seconds.  
+Setup will take about 5 minutes the first time.  After the first time, it's about 30 seconds.
 
 ##### 1. Deploy app
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)  
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/crcastle/collaborative-code-conference)  
 
 This will deploy the web app to [Heroku](https://www.heroku.com).
 
@@ -34,26 +34,26 @@ Share the URL with the person you want to collaborate with.  Anyone that visits 
 If two people are viewing a code conference URL, one of you can click 'Connect Video' to establish a peer-to-peer audio and video WebRTC connection between your browsers.  The other side will be prompted by and must accept the invitation.
 
 ## FAQ
-* *What is Heroku?*  
+* *What is Heroku?*
 "Heroku is a cloud platform that lets companies build, deliver, monitor and scale apps — we're the fastest way to go from idea to URL, bypassing all those infrastructure headaches." (from https://www.heroku.com/what)
 
-* *What is Twilio?*  
+* *What is Twilio?*
 Twilio is "A Messaging, Voice, Video and Authentication API for every application" (from https://www.twilio.com)
 
-* *Is this really free?*  
+* *Is this really free?*
 Well, almost.  This app uses two services -- Heroku and Twilio -- and the total cost will range from $0.0002 (not a typo) to $0.50<sup id="a1">[1](#f1)</sup> for a 60 minute conference with two people.  Cost is pay-as-you-go, i.e. it's related to the length of the conference and the number of participants.  You pay for what you use.  No automatically recurring monthly fee that you'll forget to cancel.
 ###### Heroku Costs
 Heroku provides the hardware the app runs on and makes sure it has no problems.  Heroku allows anyone to run an app for free for 18 hours per day (i.e. it must "sleep" for six hours each day).  If you need more you can upgrade your app's plan.  Here's [Heroku's pricing page](https://www.heroku.com/pricing).
 ###### Twilio Costs
 Twilio helps setup the peer-to-peer connection between interviewer and interviewee and provides some "magic" to ensure it works smoothly.  This magic is where the cost comes in.  Sending peer-to-peer audio and video over the web is not simple because 1) the technology standard used, [WebRTC](https://en.wikipedia.org/wiki/WebRTC), is still pretty new and 2) [NAT](https://en.wikipedia.org/wiki/Network_address_translation), which is used in most home and corporate networks, makes it difficult to establish direct peer-to-peer connections.  Because of these complexities, Twilio pricing is a little less simple to explain.  Here are the relevant pricing pages: [Video Pricing](https://www.twilio.com/video#pricing) and [STUN/TURN Pricing](https://www.twilio.com/stun-turn/pricing).  [TURN](https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT) is the part that could *potentially* bring the cost up to $0.50, which is still not really that bad for a 60 minute video call.  TURN relays the audio and video between peers in scenarios where a direct peer-to-peer connection cannot be established.
 
-* *Can I use this for interviewing candidates without worrying about it crashing?*  
+* *Can I use this for interviewing candidates without worrying about it crashing?*
 Not yet!  But that's because my code has not been fully tested.  However the underlying services provided by Heroku and Twilio are battle-tested and very stable.  Heroku is owned by [Salesforce](https://www.salesforce.com) and, as of writing this (March 2016), serves [8 billion requests per day](https://www.heroku.com/what#trusting-heroku-with-success).  Twilio is the leader in programmable web, SMS, and video communications.  Here is more information about Twilio's [security](https://www.twilio.com/platform/security), [resiliency](https://www.twilio.com/platform/resiliency), and [scalability](https://www.twilio.com/platform/scalability).
 
-* *Can you add Feature X?*  
+* *Can you add Feature X?*
 Check the [open feature requests](https://github.com/crcastle/collaborative-code-conference/labels/enhancement) to see if someone else has already requested Feature X.  If not, [please tell me more](https://github.com/crcastle/collaborative-code-conference/issues/new?title=New%20Feature:%20&labels=enhancement) about what you're looking for and why it would be useful.  If you know JavaScript and/or Node.js, feel free to submit a [pull request](https://github.com/crcastle/collaborative-code-conference/pulls) with the code changes for Feature X and I'll check it out.
 
-* *I found a bug.*  
+* *I found a bug.*
 Please [tell me about it](https://github.com/crcastle/collaborative-code-conference/issues/new?title=Bug:%20&labels=bug) so I can fix it!
 
 Have an unanswered question?  [Ask it here](https://github.com/crcastle/collaborative-code-conference/issues/new?title=Question:%20&labels=question).
