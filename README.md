@@ -1,5 +1,7 @@
 <img src="https://raw.githubusercontent.com/crcastle/collaborative-code-conference/master/build/client/img/codie.png" width="100px">
+
 ## Why do I want this?
+
 - Need to do some quick code collaboration with someone remotely?
 - Need a simple way to do a remote coding interview?
 - Tired of flipping back and forth between Google Hangouts and Google Docs during the interview?
