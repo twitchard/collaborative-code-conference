@@ -92,9 +92,9 @@ var getToken = function(request, response) {
   token.identity = identity;
 
   //grant the access token Twilio Video capabilities
-  var grant = new ConversationsGrant();
-  grant.configurationProfileSid = process.env.TWILIO_CONFIGURATION_SID;
-  token.addGrant(grant);
+  // var grant = new ConversationsGrant();
+  // grant.configurationProfileSid = process.env.TWILIO_CONFIGURATION_SID;
+  // token.addGrant(grant);
 
   // Serialize the token to a JWT string and include it in a JSON response
   response.send({
